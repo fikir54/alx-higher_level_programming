@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 def search_replace(my_list, search, replace):
-    if my_list != None:
-        new_list = my_list[:]
-        for i in range(len(new_list)):
-            if new_list[i] == search:
-                new_list[i] = replace
+    new_list = my_list.copy()
+    for idx, item in enumerate(new_list):
+        if item == search:
+            new_list[idx] = replace
     return new_list
