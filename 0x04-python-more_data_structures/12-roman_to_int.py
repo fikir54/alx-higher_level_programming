@@ -1,16 +1,12 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    if type(roman_string) != str or not roman_string:
+    numbers = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
+
+    if not isinstance(roman_string, str) or roman_string is None:
         return 0
-    dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
-    init = 0
-    before = 0
-    total = 0
-    for i in range(len(roman_string)):
-        init = dict[roman_string[i]]
-        if init > before:
-            total = total + init - 2 * before
-        else:
-            total = total + init
-        before = init
-    return total 
+    pre, sum = 0, 0
+
+    for i in roman_string:
+        sum += numbers[i] if numbers[i] <= pre else numbers[i] - pre * 2
+        pre = numbers[i]
+    return sum 
