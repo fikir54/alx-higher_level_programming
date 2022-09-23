@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-""" This module reads URL from server"""
-import urllib.request as lib
+"""fetches https://intranet.hbtn.io/status"""
+from urllib import request
 
-if __name__ == '__main__':
-    with lib.urlopen('https://intranet.hbtn.io/status') as response:
-        view = response.read()
-print("Body response:")
-print("\t- type: {}".format(type(view)))
-print("\t- content: {}".format(view))
-print("\t- utf8 content: {}".format(view.decode()))
+if __name__ == "__main__":
+    with request.urlopen('https://intranet.hbtn.io/status') as res:
+        content = res.read()
+        print("Body response:")
+        print("\t- type: {}".format(type(content)))
+        print("\t- content: {}".format(content))
+        print("\t- utf8 content: {}".format(content.decode('utf-8')))
